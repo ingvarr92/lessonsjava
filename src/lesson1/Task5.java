@@ -8,10 +8,14 @@ public class Task5 {
         double res1 = c - a;
         double res2 = c - b;
         if (Math.abs(res1) < Math.abs(res2)){
-            System.out.println(res1);
+            System.out.println(a);
         }
         else {
-            System.out.println(res2);
+            System.out.println(b);
         }
+
+        // другой вариант с тиральным оператором
+        double answer = (res1 > res2) ? a : b;
+        System.out.println(answer);
     }
 }

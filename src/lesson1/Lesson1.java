@@ -61,7 +61,7 @@ public class Lesson1 {
         // ^ если операторы разные и один из них true то он вернет true (исключающие и)
 
 
-
+//kjgkgkjgkjg
 
     }
 }
