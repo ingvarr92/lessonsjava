@@ -27,14 +27,30 @@ public class LinkinList {
         }
     }
 
-//    public Object get(int index) {
-//        if (size >= index) {// Как находить нужный узел?
-//        return "";
-//
-//        } else {
-//            System.out.println("Не существует такого индекса");
-//        }
-//    }
+    public Object get(int index) {
+
+        if (size >= index) {// Как находить нужный узел?
+        return "";
+
+        } else {
+            System.out.println("Не существует такого индекса");
+            return null;
+        }
+
+    }
+
+    public void add (Object object, int index){
+        Node node = nFirst;
+        while (node.nodeNext != null){
+            if (node.getIndex()==index){
+                Node nodeNew = new Node (index,object);
+            }
+
+
+            node = node.nodeNext;
+        }
+        node =
+    }
 
 }
 

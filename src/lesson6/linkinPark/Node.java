@@ -3,8 +3,8 @@ package lesson6.linkinPark;
 public class Node {
     private int index;
     private Object object;
-    private Node nodeNext;
-    private Node nodePriv;
+     public Node nodeNext;
+     public Node nodePriv;
 
     public Node(int index, Object object) {
         this.index = index;
