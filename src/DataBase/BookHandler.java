@@ -8,14 +8,14 @@ public class BookHandler {
 
     public static void createTable() throws SQLException {
 
-        String sql = "CREATE TABLE IF NOT EXISTS Book2 (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title TEXT NOT NULL, pages INTEGER NOT NULL);";
-        DriverManager.registerDriver(new JDBC());
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:lesson.db")) {
-            Statement statement = connection.createStatement();
-            int row = statement.executeUpdate(sql);// передаем sql запрос
-            System.out.println(row);
+//        String sql = "CREATE TABLE IF NOT EXISTS Book2 (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title TEXT NOT NULL, pages INTEGER NOT NULL);";
+//        DriverManager.registerDriver(new JDBC());
+//        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:lesson.db")) {
+//            Statement statement = connection.createStatement();
+//            int row = statement.executeUpdate(sql);// передаем sql запрос
+//            System.out.println(row);
         }
-    }
+  //  }
 
     public static void insertIntoTable(Lesson8Book book) throws SQLException {
         String sql = "INSERT INTO Book (title, pages) VALUES (?, ?);";
@@ -45,15 +45,15 @@ public class BookHandler {
                 book.setTitle(resultSet.getString("title"));
                 book.setPages(resultSet.getInt("pages"));
             }
-//            Lesson8Book book = new Lesson8Book();
-//            while (resultSet.next()) {
-//                book.setTitle(resultSet.getString("title"));
-//                book.setPages(resultSet.getInt("pages"));
-////                String setTitle = resultSet.getString("title");
-////                int setPages = resultSet.getInt("pages");
-////                System.out.println("title = " + setTitle);
-////                System.out.println("pages = " + setPages);
-//            }
+            Lesson8Book book = new Lesson8Book();
+            while (resultSet.next()) {
+                book.setTitle(resultSet.getString("title"));
+                book.setPages(resultSet.getInt("pages"));
+//                String setTitle = resultSet.getString("title");
+//                int setPages = resultSet.getInt("pages");
+//                System.out.println("title = " + setTitle);
+//                System.out.println("pages = " + setPages);
+            }
             return book;
         }
     }

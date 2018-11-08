@@ -46,10 +46,9 @@ public class LinkinList {
                 Node nodeNew = new Node (index,object);
             }
 
-
             node = node.nodeNext;
         }
-        node =
+
     }
 
 }
