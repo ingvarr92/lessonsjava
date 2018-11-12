@@ -55,9 +55,9 @@ public class Main {
         Book book = new Book("F",20);
         storage.add(null);
        Object b = storage.get(0);
+
+
     }
-
-
 
 
 }
