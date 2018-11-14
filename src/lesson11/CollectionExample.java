@@ -1,9 +1,6 @@
 package lesson11;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
 public class CollectionExample {
     // Сделать задачу номер 6
@@ -88,6 +85,58 @@ public class CollectionExample {
 
         String[] arr1 = stringLinkedList.toArray(new String[0]);
         System.out.println(Arrays.toString(arr1));
+
+
+
+//-----------------------------SETs
+        // тоже интерфейс в нем не может быть дублирующих значений
+        // HashSet - самый быстрый по добавлению и удалению элементов.
+        // SortedSet -> TreeSet
+        // LinkedHashSet - уступает HashSet но не на много
+
+        HashSet<String> hashSet = new HashSet<>();
+        hashSet.add("Element 1");
+        hashSet.add("Element 2");
+        hashSet.add("Element 3");
+        hashSet.add("Element 3");
+        System.out.println(hashSet.toString());
+
+        TreeSet<String> treeSet = new TreeSet<>();
+        treeSet.add("Element 2");
+        treeSet.add("Element 1");
+        treeSet.add("Element 3");
+        System.out.println(treeSet.toString());
+
+        LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>();
+        linkedHashSet.add("Element 2");
+        linkedHashSet.add("Element 1");
+        linkedHashSet.add("Element 3");
+        System.out.println(linkedHashSet.toString());
+
+
+//
+//        Ввести с клавиатуры 5 слов в список строк.
+//        Удалить 3 - ий элемент списка, и вывести оставшиеся элементы в обратном порядке.
+        LinkedList<String> linkedList = new LinkedList<>();
+        Scanner in = new Scanner(System.in);
+        for (int i = 0; i < 5 ; i++){
+            linkedList.add (in.nextLine());
+        }
+        linkedList.remove(2);
+        for (int b = linkedList.size()-1; b > -1; b--){
+            System.out.println(linkedList.get(b));
+        }
+
+
+//        Создать множество чисел(Set<Integer>), занести туда 20 различных чисел.
+//        Удалить из множества все числа больше 10.
+
+
+
+
+
+
+
 
 
 
