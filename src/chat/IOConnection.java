@@ -1,7 +1,5 @@
 package chat;
 
-import oct_nov.lesson16.printApp.Message;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -32,7 +30,7 @@ public class IOConnection {
         }
     }
 
-    public Message recive(){
+    public Message receive(){
         Message message = null;
         try {
             message = (Message)in.readObject();

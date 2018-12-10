@@ -4,10 +4,9 @@ import java.util.Scanner;
 
 public class TextProcessor {
     // перечилслить все команды константами
-    enum commands {process, repeat, cancel, exit };
+    enum Commands {process, repeat, cancel, exit };
 
     private CommandsHistory history = new CommandsHistory();
-
 
     //private
     private void executeCommand(Command command){
@@ -40,9 +39,6 @@ public class TextProcessor {
                     break;
 
             }
-
         }
     }
-
-
 }
