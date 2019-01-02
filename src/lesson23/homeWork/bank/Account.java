@@ -23,4 +23,8 @@ public class Account {
     public int getAmound() {
         return amount;
     }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 }
