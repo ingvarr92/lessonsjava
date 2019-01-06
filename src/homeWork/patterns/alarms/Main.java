@@ -1,6 +1,6 @@
 package homeWork.patterns.alarms;
 
-public class Alarms {
+public class Main {
 //    Реализовать сигнализации, реагирующие на повышение температуры (паттерн observer).
 //    Класс Sensor инкрементально повышает температуру, и на каждое изменение температуры
 //    оповещает слушателей (сигнализации). Их должно быть три,
@@ -18,5 +18,12 @@ public class Alarms {
 //    то сообщение не повторяется на дальнейшее повышение температуры,
 //    но если опустится ниже порога, а потом опять преодолеет, то выведется снова.
 
+    public static void main(String[] args) {
+        Sensor sensor = new Sensor(0);
+        while (sensor.getTemp()< 700) sensor.tempPlus(100);
+        while (sensor.getTemp() > 0) sensor.tempMinus(200);
+        while (sensor.getTemp()< 700) sensor.tempPlus(50);
+
+    }
     
 }
