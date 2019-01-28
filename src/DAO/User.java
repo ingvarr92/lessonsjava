@@ -21,4 +21,12 @@ public class User {
     public void setName(String name) {
         this.login = name;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                '}';
+    }
 }

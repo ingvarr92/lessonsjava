@@ -7,7 +7,7 @@ public class BookHandler {
     public static void createTable() throws SQLException {
 
 //        String sql = "CREATE TABLE IF NOT EXISTS Book2 (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title TEXT NOT NULL, pages INTEGER NOT NULL);";
-//        DriverManager.registerDriver(new JDBC());
+ //       DriverManager.registerDriver(new JDBC());
 //        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:lesson.db")) {
 //            Statement statement = connection.createStatement();
 //            int row = statement.executeUpdate(sql);// передаем sql запрос

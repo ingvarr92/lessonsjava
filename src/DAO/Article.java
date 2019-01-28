@@ -16,6 +16,9 @@ public class Article {
         return id;
     }
 
+    public int getIdUser() {
+        return idUser;
+    }
 
     public String getTitle() {
         return title;
@@ -25,11 +28,14 @@ public class Article {
         this.title = title;
     }
 
-    public int getIdUser() {
-        return idUser;
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", idUser=" + idUser +
+                '}';
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
+
 }

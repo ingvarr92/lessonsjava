@@ -1,4 +1,4 @@
-package Lesson25StreamApi;
+package lesson25StreamApi;
 
 import java.io.File;
 import java.io.IOException;

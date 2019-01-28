@@ -4,26 +4,51 @@ import org.sqlite.JDBC;
 
 import java.sql.*;
 
-import static DAO.Dao.sql;
+public abstract class MyConnection<T> implements Dao<T> {
 
-public abstract class MyConnection {
-    public Connection getConnection() throws SQLException {
+    protected Connection connection;
+
+
+    public void getConnection() throws SQLException {
     DriverManager.registerDriver(new JDBC());
-    Connection connection = DriverManager.getConnection("jdbc:sqlite:lesson2.db");
-        return connection;
+    connection = DriverManager.getConnection("jdbc:sqlite:lesson3.db");
     }
 
-    public Statement getStatment() throws SQLException {
-        Statement statement = getConnection().createStatement();
-        return statement;
-    }
 
     public PreparedStatement getPStatment(String sqlText) throws SQLException {
-        PreparedStatement preparedStatement = getConnection().prepareStatement(sqlText);
-        return preparedStatement;
+        if (connection.isClosed()) getConnection();
+        return connection.prepareStatement(sqlText);
     }
+
+
     public void connectionClose() throws SQLException {
-        getConnection().close();
+        connection.close();
     }
+    protected String strParam(String param){
+        return '\'' + param + '\'';
+    }
+
+    protected String intParam(int param){
+        return String.valueOf(param);
+    }
+
+    protected void sqlExecute(String sqlString, String ... param) throws SQLException {
+        if (connection.isClosed()) getConnection();
+        for (int i = 0; i < param.length; i++)
+            sqlString = sqlString.replaceFirst("\\?", param[i]);
+        getPStatment(sqlString).executeUpdate();
+        connectionClose();
+    }
+
+    protected ResultSet sqlExecuteResult(String sqlString, String ... param) throws SQLException {
+        ResultSet res;
+        if (connection.isClosed()) getConnection();
+        for (int i = 0; i < param.length; i++)
+            sqlString = sqlString.replaceFirst("\\?", param[i] );
+        res = getPStatment(sqlString).executeQuery();
+        return res;
+    }
+
+
 
 }

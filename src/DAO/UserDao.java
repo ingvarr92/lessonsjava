@@ -2,55 +2,53 @@ package DAO;
 
 import org.sqlite.JDBC;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static DAO.Main.sqlUsers;
 
-public class UserDao extends MyConnection implements Dao<User> {
+public class UserDao extends MyConnection<User> implements Dao<User> {
 
     public UserDao() throws SQLException {
-        getStatment().executeUpdate(sqlUsers);
+      getConnection();
+      sqlExecute(sqlUsers);
     }
 
     @Override
-    public void add(User user) {
-        try {
-            getPStatment(insertU).setInt(1,user.getId());
-            getPStatment(insertU).setString(2,user.getName());
-            connectionClose();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void add(User user) throws SQLException {
+        sqlExecute(insertU, strParam(user.getName()));
     }
 
         @Override
-    public void delete(int id) {
-        try {
-            getPStatment(delete).setInt(1,id);
-            connectionClose();
-        }
-        catch (SQLException e){
-            e.printStackTrace();
+    public void delete(int id) throws SQLException {
+            sqlExecute(deleteU, intParam(id));
+
         }
 
+    @Override
+    public void update(int i, User user) throws SQLException{
+        sqlExecute(updateU, intParam(i), strParam(user.getName()), intParam(user.getId()));
     }
 
-//    @Override
-//    public void update(int i, String s) {
-//
-//    }
-//
-//    @Override
-//    public User[] getAll() {
-//
-//        return new User[];
-//    }
-//
-//    @Override
-//    public User getById(int i) {
-//        return null;
-//    }
+    @Override
+    public List<User> getAll()  throws SQLException {
+        ResultSet resultSet = sqlExecuteResult(getAll);
+        List<User> users = new ArrayList<>();
+        while (resultSet.next()) {
+            users.add(new User(resultSet.getString("login")));
+        }
+        connectionClose();
+        return users;
+    }
+
+    @Override
+    public User getById(int i) throws SQLException {
+        ResultSet resultSet = sqlExecuteResult(getById, intParam(i));
+        resultSet.next();
+        User user = new User(resultSet.getString("login"));
+        connectionClose();
+        return user;
+
+    }
 }
